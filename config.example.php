@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Configuration for database connection
+ * Example configuration for database connection
+ * Copy this file to config.php and update the values.
  */
 
 $host = "localhost";
