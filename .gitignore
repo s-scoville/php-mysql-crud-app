@@ -1,0 +1,22 @@
+# Database credentials
+/config.php
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# MAMP and PHP logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+
+# Dependencies
+/vendor/
