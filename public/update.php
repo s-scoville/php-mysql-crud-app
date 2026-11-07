@@ -35,6 +35,7 @@ try {
             <th>Age</th>
             <th>Location</th>
             <th>Date</th>
+            <th>Edit</th>
         </tr>
     </thead>
     
@@ -48,6 +49,7 @@ try {
                 <td><?php echo escape($row["age"]); ?></td>
                 <td><?php echo escape($row["location"]); ?></td>
                 <td><?php echo escape($row["date"]); ?></td>
+                <td><a href="update-single.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
