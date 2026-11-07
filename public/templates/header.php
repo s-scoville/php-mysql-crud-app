@@ -7,7 +7,7 @@
     
     <title>Simple Database App</title>
     
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
