@@ -7,6 +7,24 @@
 require "../config.php";
 require "../common.php";
 
+if (isset($_GET["id"])) {
+    try {
+        $connection = new PDO($dsn, $username, $password, $options);
+
+        $id = $_GET["id"];
+
+        $sql = "DELETE FROM users WHERE id = :id";
+
+        $statement = $connection->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $success = "User successfully deleted";
+    } catch (PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+    }
+}
+
 try {
     $connection = new PDO($dsn, $username, $password, $options);
 
