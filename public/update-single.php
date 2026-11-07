@@ -8,6 +8,37 @@
 require "../config.php";
 require "../common.php";
 
+if (isset($_POST['submit'])) {
+    try {
+        $connection = new PDO($dsn, $username, $password, $options);
+
+        $user = [
+            "id" => $_POST['id'],
+            "firstname" => $_POST['firstname'],
+            "lastname" => $_POST['lastname'],
+            "email" => $_POST['email'],
+            "age" => $_POST['age'],
+            "location" => $_POST['location'],
+            "date" => $_POST['date']
+        ];
+
+        $sql = "UPDATE users
+                SET id = :id,
+                    firstname = :firstname,
+                    lastname = :lastname,
+                    email = :email,
+                    age = :age,
+                    location = :location,
+                    date = :date
+                WHERE id = :id";
+
+        $statement = $connection->prepare($sql);
+        $statement->execute($user);
+    } catch (PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+    }
+}
+
 if (isset($_GET["id"])) {
     try {
         $connection = new PDO($dsn, $username, $password, $options);
@@ -32,6 +63,10 @@ if (isset($_GET["id"])) {
 ?>
 
 <?php require "templates/header.php"; ?>
+
+<?php if (isset($_POST['submit']) && $statement) : ?>
+    <?php echo escape($_POST['firstname']); ?> successfully updated.
+<?php endif; ?>
 
 <h2>Edit a user</h2>
 
