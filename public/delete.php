@@ -44,6 +44,8 @@ try {
 
 <h2>Delete users</h2>
 
+<?php if (isset($success)) echo $success; ?>
+
 <table>
     <thead>
         <tr>
@@ -54,21 +56,20 @@ try {
             <th>Age</th>
             <th>Location</th>
             <th>Date</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($result as $user) : ?>
+        <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($user["id"]); ?></td>
-                <td><?php echo escape($user["firstname"]); ?></td>
-                <td><?php echo escape($user["lastname"]); ?></td>
-                <td><?php echo escape($user["email"]); ?></td>
-                <td><?php echo escape($user["age"]); ?></td>
-                <td><?php echo escape($user["location"]); ?></td>
-                <td><?php echo escape($user["date"]); ?></td>
-                <td>
-                    <a href="delete-single.php?id=<?php echo escape($user["id"]); ?>">Delete</a>
-                </td>
+                <td><?php echo escape($row["id"]); ?></td>
+                <td><?php echo escape($row["firstname"]); ?></td>
+                <td><?php echo escape($row["lastname"]); ?></td>
+                <td><?php echo escape($row["email"]); ?></td>
+                <td><?php echo escape($row["age"]); ?></td>
+                <td><?php echo escape($row["location"]); ?></td>
+                <td><?php echo escape($row["date"]); ?></td>
+                <td><a href="delete.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
