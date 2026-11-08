@@ -5,9 +5,10 @@
  * users table.
  */
 
+require "../config.php";
+require "../common.php";
+
 if (isset($_POST['submit'])) {
-    require "../config.php";
-    require "../common.php";
 
     if (!isset($_POST['csrf']) || !hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
 
@@ -48,6 +49,7 @@ if (isset($_POST['submit'])) {
 <h2>Add a user</h2>
 
 <form method="post">
+    <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
     <label for="firstname">First Name</label>
     <input type="text" name="firstname" id="firstname">
 
